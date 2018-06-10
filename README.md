@@ -74,10 +74,6 @@ sudo service docker start
 docker build -t blabla-dev .
 ```
 
-### Build docker image based on Dockerfile at project root
-```shell
-docker build -t blabla-dev .
-```
 The docker image containing all the project will fetch all of its dependencies and add proper content
 After a while, you should see something like
 
