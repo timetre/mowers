@@ -27,5 +27,5 @@ RUN mvn clean install
 # run terminal
 #CMD ["/bin/bash"]
 
-CMD java -jar target/mowers-1.0.1-SNAPSHOT-jar-with-dependencies.jar src/test/resources/test-input && \
+CMD java -jar target/mowers-1.0.1-SNAPSHOT-jar-with-dependencies.jar mower-input && \
     while true; do sleep 1000; done
