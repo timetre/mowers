@@ -12,6 +12,15 @@ BlaBlaCar Code Test 2018.pdf
 - Program will take a well-formatted file named mower-input as input parameter
 - Once project have been pulled from Gitlab, you can still modify the file if you want to
 
+### Technologies ####
+* [Maven 3.5.3](https://maven.apache.org/)
+* [Google Guice](https://github.com/google/guice)
+* [TestNG](http://junit.org/)
+* [Mockito](http://mockito.org/)
+* [PowerMock](https://github.com/jayway/powermock)
+* [JBehave](http://jbehave.org/)
+* [Git](https://git-scm.com/)
+
 # Docker Installation
 https://docs.docker.com/install
 
