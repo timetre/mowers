@@ -45,7 +45,7 @@ public class ErrorDictionary {
      * @param category    error category
      * @param description error description
      **/
-    public ErrorDictionary(Integer code, Category category, String description) {
+    private ErrorDictionary(Integer code, Category category, String description) {
         this.code = code;
         this.category = category;
         this.description = description;

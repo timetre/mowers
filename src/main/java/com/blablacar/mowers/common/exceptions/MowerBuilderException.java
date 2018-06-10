@@ -7,7 +7,7 @@ import com.blablacar.mowers.common.ErrorDictionary;
  */
 public class MowerBuilderException extends Exception {
 
-    protected ErrorDictionary error;
+    private ErrorDictionary error;
 
     public MowerBuilderException(ErrorDictionary error, String message) {
         super(message);

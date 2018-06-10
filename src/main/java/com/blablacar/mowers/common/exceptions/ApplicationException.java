@@ -7,7 +7,7 @@ import com.blablacar.mowers.common.ErrorDictionary;
  */
 public class ApplicationException extends Exception {
 
-    protected ErrorDictionary error;
+    private ErrorDictionary error;
 
     public ApplicationException(ErrorDictionary error, String message) {
         super(message);
