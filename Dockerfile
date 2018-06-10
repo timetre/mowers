@@ -16,16 +16,18 @@ RUN yum install -y wget which && \
     yum install -y git && \
     rm -f apache-maven-3.5.3-bin.tar.gz
 
+# Creating working directory
 RUN mkdir -p /var/blabla-mowers
 
+# Copying project on image
 COPY . /var/blabla-mowers
 
+#Define as working directry
 WORKDIR /var/blabla-mowers
 
+# Install project
 RUN mvn clean install
 
-# run terminal
-#CMD ["/bin/bash"]
-
+#Run program with input file located at the root of the project
 CMD java -jar target/mowers-1.0.1-SNAPSHOT-jar-with-dependencies.jar mower-input && \
     while true; do sleep 1000; done
