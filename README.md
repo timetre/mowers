@@ -72,10 +72,4 @@ The program will start by itself and display the following result
 13:53:33.972 [main] INFO  com.blablacar.mowers.Runner - Final mower position 1 3 N
 13:53:33.972 [main] INFO  com.blablacar.mowers.Runner - ------ Moving Mower located at 3 3 E -----
 13:53:33.972 [main] INFO  com.blablacar.mowers.Runner - Final mower position 5 1 E
-13:53:33.972 [main] INFO  com.blablacar.mowers.Runner - ------ Moving Mower located at 1 2 N -----
-13:53:33.973 [main] INFO  com.blablacar.mowers.Runner - Final mower position 1 3 N
-13:53:33.973 [main] INFO  com.blablacar.mowers.Runner - ------ Moving Mower located at 1 2 N -----
-13:53:33.973 [main] INFO  com.blablacar.mowers.Runner - Final mower position 1 5 N
-13:53:33.973 [main] INFO  com.blablacar.mowers.Runner - ------ Moving Mower located at 1 2 N -----
-13:53:33.973 [main] INFO  com.blablacar.mowers.Runner - Final mower position 5 1 E
 ```
