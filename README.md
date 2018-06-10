@@ -9,6 +9,8 @@ BlaBlaCar Code Test 2018.pdf
 - This project has been developed using Java 8, maven 3.5.3, Git, Docker, IntelliJ Idea on a fedora workstation
 - Only docker and Git are required to install and run this project
 - Both tools are available on Mac, Windows or Linux
+- Program will take a well-formatted file named mower-input as input parameter
+- Once project have been pulled from Gitlab, you can still modify the file if you want to
 
 # Docker Installation
 https://docs.docker.com/install
@@ -21,6 +23,20 @@ https://git-scm.com/book/en/v2/Getting-Started-Installing-Git
 ```shell
 mkdir ~/working-dir && cd ~/working-dir
 git clone git@gitlab.jeremyvincent.net:perso/mowers.git .
+```
+
+# Modifying input file
+```shell
+vi mower-input
+```
+
+Edit file as you want to
+```shell
+5 5
+1 2 N
+LFLFLFLFF
+3 3 E
+FFRFFRFRRF
 ```
 
 # Run project on Docker image
