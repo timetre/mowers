@@ -17,7 +17,7 @@ import java.util.Arrays;
  */
 public class MowerServiceTest {
 
-    private MowerService mowerService = new MowerService();
+    private MowerServiceImpl mowerService = new MowerServiceImpl();
 
     @DataProvider
     public Object[][] isAllowedToMoveDataProvider() {
@@ -68,7 +68,7 @@ public class MowerServiceTest {
     public Object[][] moveMowerDataProvider() {
         Lawn lawn = new Lawn(5, 5);
 
-        return new Object[][] {
+        return new Object[][]{
                 //Mower ; expected new position
                 {new Mower(new Position(0, 0, CardinalPoint.N), Arrays.asList(MowerMove.F), lawn), new Position(0, 1, CardinalPoint.N)},
                 {new Mower(new Position(0, 0, CardinalPoint.E), Arrays.asList(MowerMove.F), lawn), new Position(1, 0, CardinalPoint.E)},

@@ -16,12 +16,13 @@ import java.util.List;
  */
 public class MowerBuilderTest {
 
+    private final MowerBuilderImpl mowerBuilder = new MowerBuilderImpl();
+
     /**
      * Success test case building mower
      */
     @Test
     public void testBuildMower() throws MowerBuilderException {
-        MowerBuilderImpl mowerBuilder = new MowerBuilderImpl();
         Mower mower = mowerBuilder.buildMower("1 2 E", "LFRFL", new Lawn(5, 5));
 
         Assert.assertNotNull(mower);
@@ -35,7 +36,6 @@ public class MowerBuilderTest {
      */
     @Test
     public void testBuildMowerInitialPosition() throws MowerBuilderException {
-        MowerBuilderImpl mowerBuilder = new MowerBuilderImpl();
         Position position = mowerBuilder.buildMowerInitialPosition("1 2 E");
 
         Assert.assertNotNull(position);
@@ -49,7 +49,6 @@ public class MowerBuilderTest {
      */
     @Test(expectedExceptions = MowerBuilderException.class)
     public void testBuildMowerInitialPositionNullData() throws MowerBuilderException {
-        MowerBuilderImpl mowerBuilder = new MowerBuilderImpl();
         mowerBuilder.buildMowerInitialPosition(null);
     }
 
@@ -58,7 +57,6 @@ public class MowerBuilderTest {
      */
     @Test(expectedExceptions = MowerBuilderException.class)
     public void testBuildMowerInitialPositionTooManyData() throws MowerBuilderException {
-        MowerBuilderImpl mowerBuilder = new MowerBuilderImpl();
         mowerBuilder.buildMowerInitialPosition("1 1 1 E");
     }
 
@@ -67,7 +65,6 @@ public class MowerBuilderTest {
      */
     @Test(expectedExceptions = MowerBuilderException.class)
     public void testBuildMowerInitialPositionNotEnoughData() throws MowerBuilderException {
-        MowerBuilderImpl mowerBuilder = new MowerBuilderImpl();
         mowerBuilder.buildMowerInitialPosition("1");
     }
 
@@ -85,7 +82,6 @@ public class MowerBuilderTest {
      */
     @Test(expectedExceptions = MowerBuilderException.class, dataProvider = "buildMowerInitialPositionWrongDataDataProvider")
     public void testBuildMowerInitialPositionWrongData(String data) throws MowerBuilderException {
-        MowerBuilderImpl mowerBuilder = new MowerBuilderImpl();
         mowerBuilder.buildMowerInitialPosition(data);
     }
 
@@ -96,7 +92,6 @@ public class MowerBuilderTest {
     @Test
     public void testBuildMowerMoves() throws MowerBuilderException {
         String moves = "LFRFL";
-        MowerBuilderImpl mowerBuilder = new MowerBuilderImpl();
 
         List<MowerMove> mowerMoves = mowerBuilder.buildMowerMoves(moves);
 
@@ -113,7 +108,6 @@ public class MowerBuilderTest {
      */
     @Test(expectedExceptions = MowerBuilderException.class)
     public void testBuildMowerMovesNullData() throws MowerBuilderException {
-        MowerBuilderImpl mowerBuilder = new MowerBuilderImpl();
         mowerBuilder.buildMowerMoves(null);
     }
 
@@ -122,7 +116,6 @@ public class MowerBuilderTest {
      */
     @Test(expectedExceptions = MowerBuilderException.class)
     public void testBuildMowerMovesEmptyData() throws MowerBuilderException {
-        MowerBuilderImpl mowerBuilder = new MowerBuilderImpl();
         mowerBuilder.buildMowerMoves("");
     }
 
@@ -132,7 +125,6 @@ public class MowerBuilderTest {
     @Test(expectedExceptions = MowerBuilderException.class)
     public void testBuildMowerMovesWrongData() throws MowerBuilderException {
         String moves = "FDSQF";
-        MowerBuilderImpl mowerBuilder = new MowerBuilderImpl();
         mowerBuilder.buildMowerMoves(moves);
     }
 }

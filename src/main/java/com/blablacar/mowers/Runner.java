@@ -1,14 +1,16 @@
 package com.blablacar.mowers;
 
 import com.blablacar.mowers.builder.LawnBuilder;
-import com.blablacar.mowers.builder.LawnBuilderImpl;
 import com.blablacar.mowers.common.ErrorDictionary;
+import com.blablacar.mowers.common.MainModule;
 import com.blablacar.mowers.common.exceptions.ApplicationException;
 import com.blablacar.mowers.common.exceptions.LawnBuilderException;
 import com.blablacar.mowers.models.Lawn;
 import com.blablacar.mowers.models.Mower;
 import com.blablacar.mowers.models.Position;
 import com.blablacar.mowers.services.MowerService;
+import com.google.inject.Guice;
+import com.google.inject.Injector;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -22,12 +24,17 @@ public class Runner {
     private static final Logger LOGGER = LoggerFactory.getLogger(Runner.class);
     private static final int SUCCESS_CODE = 200;
 
+    //Services used to run build lawn and mowers
+    private static MowerService mowerService;
+    private static LawnBuilder lawnBuilder;
+
     /**
      * Main method - Program entry point
      *
      * @param args
      */
     public static void main(String[] args) {
+
         //Must have only one input arg (file path to process)
         //Otherwise, log error and return exit error code
 
@@ -40,6 +47,8 @@ public class Runner {
         //Keep going
 
         try {
+
+            initServices();
 
             execute(args);
 
@@ -71,19 +80,25 @@ public class Runner {
     }
 
     /**
+     * Initializing services using Guice injection
+     */
+    private static void initServices() {
+        Injector injector = Guice.createInjector(new MainModule());
+        mowerService = injector.getInstance(MowerService.class);
+        lawnBuilder = injector.getInstance(LawnBuilder.class);
+    }
+
+    /**
      * Execute method supposed to launch fleet of mowers
      *
      * @param args
      */
     protected static void execute(String[] args) throws LawnBuilderException, ApplicationException {
 
-        MowerService mowerService = new MowerService();
-
         //File consistency should have been made before.
         //No need for checking it in here
         String filePath = args[0];
 
-        LawnBuilder lawnBuilder = new LawnBuilderImpl();
         Lawn lawn = lawnBuilder.buildLawn(filePath);
 
         if (lawn != null) {

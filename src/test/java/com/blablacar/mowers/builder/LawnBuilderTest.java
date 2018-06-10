@@ -13,12 +13,13 @@ import java.util.stream.Collectors;
  */
 public class LawnBuilderTest {
 
+    private final LawnBuilderImpl lawnBuilder = new LawnBuilderImpl(new MowerBuilderImpl());
+
     /**
      * Success test case of lawn builder
      */
     @Test
     public void testBuildLawn() throws LawnBuilderException {
-        LawnBuilderImpl lawnBuilder = new LawnBuilderImpl();
 
         Lawn lawn = lawnBuilder.buildLawn(getClass().getClassLoader().getResource("test-input-lawn-builder").getPath());
 
@@ -43,7 +44,6 @@ public class LawnBuilderTest {
      */
     @Test(expectedExceptions = LawnBuilderException.class)
     public void testBuildLawnNoFile() throws LawnBuilderException {
-        LawnBuilderImpl lawnBuilder = new LawnBuilderImpl();
         lawnBuilder.buildLawn("no-file");
     }
 
@@ -52,7 +52,6 @@ public class LawnBuilderTest {
      */
     @Test(expectedExceptions = LawnBuilderException.class)
     public void testBuildLawnMissingData() throws LawnBuilderException {
-        LawnBuilderImpl lawnBuilder = new LawnBuilderImpl();
         lawnBuilder.buildLawn(getClass().getClassLoader().getResource("ko-lawn-builder").getPath());
     }
 
@@ -61,7 +60,6 @@ public class LawnBuilderTest {
      */
     @Test
     public void testGetLawnDimensions() throws LawnBuilderException {
-        LawnBuilderImpl lawnBuilder = new LawnBuilderImpl();
         int[] dimensions = lawnBuilder.getLawnDimensions("3 5");
 
         Assert.assertEquals(dimensions.length, 2);
@@ -74,7 +72,6 @@ public class LawnBuilderTest {
      */
     @Test(expectedExceptions = LawnBuilderException.class)
     public void testGetLawnDimensionsException() throws LawnBuilderException {
-        LawnBuilderImpl lawnBuilder = new LawnBuilderImpl();
         lawnBuilder.getLawnDimensions("v f");
     }
 
@@ -83,7 +80,6 @@ public class LawnBuilderTest {
      */
     @Test(expectedExceptions = LawnBuilderException.class)
     public void testGetLawnDimensionsTooManyData() throws LawnBuilderException {
-        LawnBuilderImpl lawnBuilder = new LawnBuilderImpl();
         lawnBuilder.getLawnDimensions("1 2 3");
     }
 
@@ -92,7 +88,6 @@ public class LawnBuilderTest {
      */
     @Test(expectedExceptions = LawnBuilderException.class)
     public void testGetLawnDimensionsNotEnoughData() throws LawnBuilderException {
-        LawnBuilderImpl lawnBuilder = new LawnBuilderImpl();
         lawnBuilder.getLawnDimensions("1");
     }
 
@@ -101,7 +96,6 @@ public class LawnBuilderTest {
      */
     @Test(expectedExceptions = LawnBuilderException.class)
     public void testGetLawnDimensionsWrongValues() throws LawnBuilderException {
-        LawnBuilderImpl lawnBuilder = new LawnBuilderImpl();
         lawnBuilder.getLawnDimensions("1, 2");
     }
 }

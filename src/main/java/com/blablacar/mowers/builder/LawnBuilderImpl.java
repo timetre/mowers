@@ -5,6 +5,7 @@ import com.blablacar.mowers.common.exceptions.LawnBuilderException;
 import com.blablacar.mowers.common.exceptions.MowerBuilderException;
 import com.blablacar.mowers.models.Lawn;
 import com.blablacar.mowers.models.Mower;
+import com.google.inject.Inject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -17,15 +18,21 @@ import java.util.List;
 
 /**
  * Class allowing to properly build a lawn
+ *
  * @author Jeremy Vincent <j.vincent@meetic-corp.com>
  */
 public class LawnBuilderImpl implements LawnBuilder {
 
     private static Logger LOGGER = LoggerFactory.getLogger(LawnBuilderImpl.class);
 
-    private final MowerBuilderImpl mowerBuilder = new MowerBuilderImpl();
+    private final MowerBuilder mowerBuilder;
 
     private static String LAWN_COORDINATES_DELIMITER = " ";
+
+    @Inject
+    public LawnBuilderImpl(MowerBuilder mowerBuilder) {
+        this.mowerBuilder = mowerBuilder;
+    }
 
     @Override
     public Lawn buildLawn(String filePath) throws LawnBuilderException {

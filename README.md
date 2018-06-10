@@ -16,6 +16,8 @@ BlaBlaCar Code Test 2018.pdf
 * Java 8
 * Maven 3.5.3
 * TestNG
+* Guice
+* Lombok
 * Git
 * Docker
 * IntelliJ Idea
