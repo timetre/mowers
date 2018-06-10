@@ -13,13 +13,12 @@ BlaBlaCar Code Test 2018.pdf
 - Once project have been pulled from Gitlab, you can still modify the file if you want to
 
 ### Technologies ####
-* [Maven 3.5.3](https://maven.apache.org/)
-* [Google Guice](https://github.com/google/guice)
-* [TestNG](http://junit.org/)
-* [Mockito](http://mockito.org/)
-* [PowerMock](https://github.com/jayway/powermock)
-* [JBehave](http://jbehave.org/)
-* [Git](https://git-scm.com/)
+* Java 8
+* Maven 3.5.3
+* TestNG
+* Git
+* Docker
+* IntelliJ Idea
 
 # Docker Installation
 https://docs.docker.com/install
@@ -34,12 +33,12 @@ mkdir ~/working-dir && cd ~/working-dir
 git clone git@gitlab.jeremyvincent.net:perso/mowers.git .
 ```
 
-# Modifying input file
+# Modifying input file to fit requirements
 ```shell
 vi mower-input
 ```
 
-Edit file as you want to
+Edit file as you want
 ```shell
 5 5
 1 2 N
@@ -48,19 +47,34 @@ LFLFLFLFF
 FFRFFRFRRF
 ```
 
-# Run project on Docker image
+# There are many ways to run the project
+
+## Running project on workstation (make sure to have java installed)
+
+### Compilation
+```
+mvn clean install
+```
+This will run tests and then create a jar file **mowers-1.0.1-SNAPSHOT-jar-with-dependencies.jar** in the */target* directory.
+
+### Running ###
+```
+java -jar target/mowers-1.0.1-SNAPSHOT-jar-with-dependencies.jar mower-input
+```
+
+## Running project on Docker image
 
 ## Start docker service
 ```shell
 sudo service docker start
 ```
 
-## Build docker image based on Dockerfile at project root
+### Build docker image based on Dockerfile at project root
 ```shell
 docker build -t blabla-dev .
 ```
 
-## Build docker image based on Dockerfile at project root
+### Build docker image based on Dockerfile at project root
 ```shell
 docker build -t blabla-dev .
 ```
@@ -86,7 +100,7 @@ Removing intermediate container 612c2dfece49
 Successfully built 17cb2d6c81a4
 ```
 
-## Run docker built image
+### Run built docker image
 ```shell
 docker run blabla-dev
 ```
