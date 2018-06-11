@@ -53,7 +53,7 @@ public class LawnBuilderImpl implements LawnBuilder {
                 throw new LawnBuilderException(ErrorDictionary.ERR_UNABLE_TO_BUILD_LAWN, "Number of lines in file incorrect");
             }
 
-            //Get lawn dimensions - 1st element of list
+            //Get lawn dimensions / 1st element of list
             int[] lawnDimensions = getLawnDimensions(fileElements.get(0));
 
             LOGGER.debug("buildLawn() - Lawn dimensions : {}", lawnDimensions);
@@ -89,6 +89,14 @@ public class LawnBuilderImpl implements LawnBuilder {
         return lawn;
     }
 
+    /**
+     * Based on data String input, extract lawn dimensions
+     * data should be composed of 2 integers separated by a space
+     *
+     * @param data
+     * @return
+     * @throws LawnBuilderException
+     */
     protected int[] getLawnDimensions(String data) throws LawnBuilderException {
         String[] dimensionsAsString = data.split(LAWN_COORDINATES_DELIMITER);
 

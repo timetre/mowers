@@ -28,11 +28,20 @@ public class MowerBuilderImpl implements MowerBuilder {
     public Mower buildMower(String mowerPositionsFromFile, String mowerMovesFromFile, Lawn lawn) throws MowerBuilderException {
 
         Position position = buildMowerInitialPosition(mowerPositionsFromFile);
-        List<MowerMove> mowerMove = buildMowerMoves(mowerMovesFromFile);
+        List<MowerMove> mowerMoves = buildMowerMoves(mowerMovesFromFile);
 
-        return new Mower(position, mowerMove, lawn);
+        return new Mower(position, mowerMoves, lawn);
     }
 
+    /**
+     * Build a Position object which represents the initial position of the mower in the lawn
+     * Input should be composed of 2 integers and 1 CardinalPoint letter (N-E-S-W)
+     * All of them separated by a space eg : 1 2 E or 5 3 N
+     *
+     * @param mowerPositionsAsString
+     * @return
+     * @throws MowerBuilderException
+     */
     protected Position buildMowerInitialPosition(String mowerPositionsAsString) throws MowerBuilderException {
 
         if (mowerPositionsAsString == null || mowerPositionsAsString.isEmpty()) {
@@ -63,6 +72,14 @@ public class MowerBuilderImpl implements MowerBuilder {
         }
     }
 
+    /**
+     * Build a List of MowerMove based on mower moves as string (composed of R L or F)
+     * List should be formatted with no separator eg : LRFFRL
+     *
+     * @param mowerMovesAsString
+     * @return
+     * @throws MowerBuilderException
+     */
     protected List<MowerMove> buildMowerMoves(String mowerMovesAsString) throws MowerBuilderException {
         if (mowerMovesAsString == null || mowerMovesAsString.isEmpty()) {
             LOGGER.error("buildMowerMoves({}) - Cannot build moves due to incorrect input values", mowerMovesAsString);

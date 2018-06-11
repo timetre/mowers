@@ -17,6 +17,8 @@ import org.slf4j.LoggerFactory;
 import java.io.File;
 
 /**
+ * Runne class - Entry point for the main method
+ *
  * @author Jeremy Vincent <j.vincent@meetic-corp.com>
  */
 public class Runner {
@@ -95,7 +97,7 @@ public class Runner {
      */
     protected static void execute(String[] args) throws LawnBuilderException, ApplicationException {
 
-        //File consistency should have been made before.
+        //File existence should have been made before.
         //No need for checking it in here
         String filePath = args[0];
 

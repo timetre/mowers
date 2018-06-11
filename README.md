@@ -51,7 +51,7 @@ FFRFFRFRRF
 
 # There are many ways to run the project
 
-## Running project on workstation (make sure to have java installed)
+## Running project on workstation (make sure to have java, maven and so on installed)
 
 ### Compilation
 ```
