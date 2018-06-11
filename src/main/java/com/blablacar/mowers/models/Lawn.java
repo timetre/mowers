@@ -28,4 +28,12 @@ public class Lawn {
             mowers.add(mower);
         }
     }
+
+    @Override
+    public String toString() {
+        return "Lawn{" +
+                "maxHeight=" + maxHeight +
+                ", maxLength=" + maxLength +
+                '}';
+    }
 }

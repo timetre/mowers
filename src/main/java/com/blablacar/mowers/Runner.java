@@ -2,13 +2,11 @@ package com.blablacar.mowers;
 
 import com.blablacar.mowers.builder.LawnBuilder;
 import com.blablacar.mowers.common.ErrorDictionary;
-import com.blablacar.mowers.common.MainModule;
+import com.blablacar.mowers.common.MowerModule;
 import com.blablacar.mowers.common.exceptions.ApplicationException;
 import com.blablacar.mowers.common.exceptions.LawnBuilderException;
 import com.blablacar.mowers.models.Lawn;
-import com.blablacar.mowers.models.Mower;
-import com.blablacar.mowers.models.Position;
-import com.blablacar.mowers.services.MowerService;
+import com.blablacar.mowers.services.LawnService;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
 import org.slf4j.Logger;
@@ -26,9 +24,9 @@ public class Runner {
     private static final Logger LOGGER = LoggerFactory.getLogger(Runner.class);
     private static final int SUCCESS_CODE = 200;
 
-    //Services used to run build lawn and mowers
-    private static MowerService mowerService;
+
     private static LawnBuilder lawnBuilder;
+    private static LawnService lawnService;
 
     /**
      * Main method - Program entry point
@@ -85,8 +83,8 @@ public class Runner {
      * Initializing services using Guice injection
      */
     private static void initServices() {
-        Injector injector = Guice.createInjector(new MainModule());
-        mowerService = injector.getInstance(MowerService.class);
+        Injector injector = Guice.createInjector(new MowerModule());
+        lawnService = injector.getInstance(LawnService.class);
         lawnBuilder = injector.getInstance(LawnBuilder.class);
     }
 
@@ -101,19 +99,11 @@ public class Runner {
         //No need for checking it in here
         String filePath = args[0];
 
+        //Building new Lawn based on input file
         Lawn lawn = lawnBuilder.buildLawn(filePath);
 
-        if (lawn != null) {
-
-            for (Mower mower : lawn.getMowers()) {
-                LOGGER.info("------ Moving Mower located at {} -----", mower.getPosition());
-
-                Position position = mowerService.moveMower(mower);
-
-                LOGGER.info("Final mower position {}", position);
-            }
-
-        }
+        //Start to mow the lawn
+        lawnService.mowLawn(lawn);
 
     }
 

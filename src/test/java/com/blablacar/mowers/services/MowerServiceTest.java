@@ -90,4 +90,28 @@ public class MowerServiceTest {
     public void testMoveMowerNull() throws ApplicationException {
         mowerService.moveMower(null);
     }
+
+
+    //Testing desired conditions
+    @DataProvider
+    public Object[][] moveMowerProdDataProvider() {
+        Lawn lawn = new Lawn(5, 5);
+
+        return new Object[][]{
+                //Mower ; expected new position
+                {new Mower(new Position(0, 0, CardinalPoint.N), Arrays.asList(MowerMove.F), lawn), new Position(0, 1, CardinalPoint.N)},
+                {new Mower(new Position(0, 0, CardinalPoint.E), Arrays.asList(MowerMove.F), lawn), new Position(1, 0, CardinalPoint.E)},
+                //Same position expected as move is forbidden (out of lawn)
+                {new Mower(new Position(0, 0, CardinalPoint.S), Arrays.asList(MowerMove.F), lawn), new Position(0, 0, CardinalPoint.S)},
+                {new Mower(new Position(0, 0, CardinalPoint.W), Arrays.asList(MowerMove.F), lawn), new Position(0, 0, CardinalPoint.W)},
+        };
+    }
+
+    @Test(dataProvider = "moveMowerProdDataProvider")
+    public void testMoveMowerProd(Mower mower, Position expectedPosition) throws ApplicationException {
+
+        Position position = mowerService.moveMower(mower);
+
+        Assert.assertEquals(position, expectedPosition);
+    }
 }
