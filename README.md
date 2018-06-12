@@ -32,7 +32,7 @@ https://git-scm.com/book/en/v2/Getting-Started-Installing-Git
 
 ```shell
 mkdir ~/working-dir && cd ~/working-dir
-git clone git@gitlab.jeremyvincent.net:perso/mowers.git .
+git clone https://github.com/timetre/mowers.git .
 ```
 
 # Modifying input file to fit requirements
